@@ -1,0 +1,489 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>novo_diagrama</processId>
+    </processDefinitionPK>
+    <processDescription>novo_diagrama</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>true</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId></categoryId>
+    <managerEngineAllocationId></managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Qualidade&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>novo_diagrama</processId>
+      <version>2</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>0</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>false</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>novo_diagrama</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>150</positionX>
+      <positionY>82</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>novo_diagrama</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </processStatePK>
+      <stateName>Act1</stateName>
+      <stateDescription>Act1</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>260</positionX>
+      <positionY>208</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>novo_diagrama</processId>
+        <version>1</version>
+        <sequence>9</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>520</positionX>
+      <positionY>220</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list/>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>novo_diagrama</processId>
+        <version>1</version>
+        <linkSequence>6</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>novo_diagrama</processId>
+        <version>1</version>
+        <linkSequence>10</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>5</initialStateSequence>
+      <finalStateSequence>9</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessFinish</eventId>
+        <processId>novo_diagrama</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessFinish(processId){&#xd;
+	log.info(&quot;ID do processo: &quot;+processId);&#xd;
+&#xd;
+	var documentId = anexarDocumento()&#xd;
+&#xd;
+	if(documentId){&#xd;
+		enviaEmail(documentId, processId, getValue(&quot;WKUser&quot;));&#xd;
+	}&#xd;
+&#xd;
+}&#xd;
+&#xd;
+function anexarDocumento(){&#xd;
+	var documentId;&#xd;
+	var pastaDestino = 164;&#xd;
+	var usuarioAdmin = &quot;admin&quot;;&#xd;
+	var senha = &quot;gustavo@123&quot;;&#xd;
+	try{		&#xd;
+		var file = gerarPDF();&#xd;
+&#xd;
+		var serviceManager = ServiceManager.getService(&quot;ECMDocument&quot;);&#xd;
+		var serviceHelper = serviceManager.getBean();&#xd;
+		var serviceBuilder = serviceHelper.instantiate(&quot;com.totvs.technology.ecm.dm.ws.ECMDocumentServiceService&quot;);&#xd;
+		var documentService = serviceBuilder.getDocumentServicePort();&#xd;
+		var factory = serviceHelper.instantiate(&quot;com.totvs.technology.ecm.dm.ws.ObjectFactory&quot;);&#xd;
+&#xd;
+		var arrayBytes = JSON.parse(file).buf;&#xd;
+&#xd;
+		var anexo = criarAnexo(factory, arrayBytes);&#xd;
+&#xd;
+		var listaAnexo = factory.createAttachmentArray();&#xd;
+		listaAnexo.getItem().add(anexo);&#xd;
+&#xd;
+		var result = documentService.createSimpleDocument(usuarioAdmin, senha, getValue(&quot;WKCompany&quot;), pastaDestino,getValue(&quot;WKUser&quot;) ,&quot;Relatório&quot;, listaAnexo);&#xd;
+		documentId = result.getItem().get(0).getDocumentId();&#xd;
+&#xd;
+		log.info(&quot;Executou o serviço: &quot;+result.getItem().get(0).getWebServiceMessage());&#xd;
+&#xd;
+		hAPI.attachDocument(documentId);&#xd;
+&#xd;
+&#xd;
+&#xd;
+	} catch(err) {&#xd;
+		log.info(&quot;ocorreu um erro ao executar o serviço: &quot;+err);&#xd;
+	}&#xd;
+&#xd;
+	return documentId;&#xd;
+}&#xd;
+&#xd;
+function enviaEmail(documentId,processId, destinatario){&#xd;
+&#xd;
+	var url = fluigAPI.getDocumentService().getDownloadURL(documentId);&#xd;
+&#xd;
+	//Monta mapa com parâmetros do template&#xd;
+	var parametros = new java.util.HashMap();&#xd;
+	parametros.put(&quot;SERVER_URL&quot;,&quot;http://spon010113228:8080&quot;);&#xd;
+	parametros.put(&quot;TENANT_ID&quot;, getValue(&quot;WKCompany&quot;));&#xd;
+	parametros.put(&quot;RECEIVER&quot;, obterNomeDestinatario(destinatario));&#xd;
+	parametros.put(&quot;processo&quot;, processId);&#xd;
+	parametros.put(&quot;link_download&quot;, url);&#xd;
+&#xd;
+	//Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
+	parametros.put(&quot;subject&quot;, &quot;Retorno do processo&quot;);&#xd;
+&#xd;
+	//Monta lista de destinatários&#xd;
+	var destinatarios = new java.util.ArrayList();&#xd;
+	destinatarios.add(destinatario);&#xd;
+	log.info(&quot;Entrou no método de enviar e-mail&quot;)&#xd;
+	//Envia e-mail&#xd;
+	notifier.notify(getValue(&quot;WKUser&quot;), &quot;meu_template&quot;, parametros, destinatarios, &quot;text/html&quot;);&#xd;
+&#xd;
+}&#xd;
+&#xd;
+function gerarPDF(){&#xd;
+	var clientService = fluigAPI.getAuthorizeClientService();&#xd;
+&#xd;
+	var atributos = JSON.stringify(obterDadosFormulario());&#xd;
+	var data = {&#xd;
+			companyId : getValue(&quot;WKCompany&quot;) + &apos;&apos;,&#xd;
+			serviceCode : &apos;generator&apos;,&#xd;
+			endpoint : &apos;/generator/pdf/generate&apos;,&#xd;
+			method : &apos;post&apos;,&#xd;
+			timeoutService: &apos;100&apos;, // segundos&#xd;
+			params : {&#xd;
+				&quot;atributos&quot;:atributos&#xd;
+&#xd;
+			}&#xd;
+	}&#xd;
+	&#xd;
+	var vo = clientService.invoke(JSON.stringify(data));&#xd;
+&#xd;
+	if(vo.getResult()== null || vo.getResult().isEmpty()){&#xd;
+		throw new Exception(&quot;Retorno está vazio&quot;);&#xd;
+	}else{&#xd;
+		log.info(&quot;Serviço retornou resultado válido&quot;);&#xd;
+		return vo.getResult();&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function obterDadosFormulario(){&#xd;
+	var conteudo = [];&#xd;
+&#xd;
+	var idDoc = getValue(&quot;WKNumProces&quot;);&#xd;
+&#xd;
+	var c1 = DatasetFactory.createConstraint(&quot;documentid&quot;, idDoc, idDoc, ConstraintType.MUST);&#xd;
+&#xd;
+	dataSet = DatasetFactory.getDataset(&quot;ds_FormTeste&quot;, null, [c1], null);&#xd;
+&#xd;
+	if(dataSet != null){&#xd;
+&#xd;
+		//retorna um array com os nome das colunas		&#xd;
+		var colunas = dataSet.getColumnsName();&#xd;
+&#xd;
+		//percorre o dataset&#xd;
+		for(var i = 0; i&lt; colunas.length; i++){&#xd;
+&#xd;
+			var aux = colunas[i].length();&#xd;
+&#xd;
+			//se o nome da coluna conter o &quot;metadata#&quot; o codigo ignora&#xd;
+			if(aux &gt; 7 &amp;&amp; colunas[i].indexOf(&quot;metadata#&quot;) != -1){&#xd;
+&#xd;
+			}&#xd;
+			else{&#xd;
+&#xd;
+				conteudo.push(&quot;&apos;&quot;+colunas[i]+&quot;&apos;:&apos;&quot;+hAPI.getCardValue(colunas[i])+&quot;&apos;&quot;);&#xd;
+			}&#xd;
+&#xd;
+&#xd;
+		}&#xd;
+		&#xd;
+&#xd;
+		&#xd;
+		var SUPERconteudo =&quot;{&quot;+conteudo.join(&quot;,&quot;)+&quot;}&quot;;&#xd;
+		&#xd;
+		log.info(&quot;VALORES -&gt; &quot; + SUPERconteudo);&#xd;
+		&#xd;
+		return SUPERconteudo;&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function obterNomeDestinatario(destinatario){&#xd;
+&#xd;
+	var c1 = DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, &quot;%&quot;+destinatario+&quot;%&quot;, &quot;%&quot;+destinatario+&quot;%&quot;, ConstraintType.MUST);&#xd;
+	c1.setLikeSearch(true);&#xd;
+&#xd;
+	var usuario = DatasetFactory.getDataset(&quot;colleague&quot;, null, [c1], null);&#xd;
+&#xd;
+	return usuario.getValue(0, &quot;colleagueName&quot;);&#xd;
+}&#xd;
+&#xd;
+function criarAnexo(factory, arrayBytes){&#xd;
+	var anexo = factory.createAttachment();	&#xd;
+&#xd;
+	anexo.setFileName(&quot;formulario.pdf&quot;);&#xd;
+	anexo.setFilecontent(arrayBytes);&#xd;
+	anexo.setFileSize(arrayBytes.length);&#xd;
+	anexo.setPrincipal(true);&#xd;
+&#xd;
+	return anexo;&#xd;
+}&#xd;
+&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>290</height>
+      <width>831</width>
+      <positionX>10</positionX>
+      <positionY>10</positionY>
+      <stateName>Pool</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>novo_diagrama</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>9F9F9F</color>
+      <height>145</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>10</positionY>
+      <stateName>Reporter</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>novo_diagrama</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>C0C0C0</color>
+      <height>145</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>155</positionY>
+      <stateName>Assignee</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>novo_diagrama</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>novo_diagrama</processId>
+        <version>2</version>
+        <linkSequence>6</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>167</positionX>
+      <positionY>235</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>novo_diagrama</processId>
+        <fieldId>nome</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>nome</fieldDescription>
+      <slotId>1</slotId>
+    </ProcessFormField>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+</list>

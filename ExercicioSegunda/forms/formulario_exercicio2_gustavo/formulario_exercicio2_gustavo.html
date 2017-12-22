@@ -1,0 +1,71 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="form-group col-md-10 col-xs-12 col-sm-12">
+				<label for="colaborador">Colaborador:</label>
+				<select name="colaborador" dataset="colleague" datasetkey="colleagueName" datasetvalue="colleagueName" class="form-control" id="colaborador">
+				</select>
+			</div>	
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-md-12 col-xs-12 col-sm-12">
+				<label for="moeda">Moeda</label>
+				<select name="Moeda" id="Moeda" class="form-control">
+					<option value="real">Real</option>
+					<option value="dolar">Dólar</option>
+					<option value="euro">Euro</option> 
+				</select>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-md-12 col-xs-12 col-sm-12">
+				<label for="valorCotacao">Valor da cotação:</label>
+				<input class="form-control" name="valorCotacao" id="valorCotacao"/>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-md-12 col-xs-12 col-sm-12">
+				<label for="estado">Estado:</label>
+				<input type="zoom"
+					id="estado"
+					name="estado"
+					data-zoom="{
+						'displayKey' : 'Sigla',
+						'datasetId': 'estado_gustavo',
+						'placeholder' : 'Selecione o estado',
+						'fields' : [
+						{
+							'field' : 'Sigla',
+							'label' : 'Sigla'
+						},
+						{
+							'field' : 'Estado',
+							'label' : 'Nome do estado'
+						}
+						]
+					
+					}"/>
+			</div>
+		</div>
+	</div>
+	
+	
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+
+	<section id="perguntas">
+		<div class="col-md-12">
+			<p>Qual o significado de ESB?</p>
+			<div class="form-check">
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta1_resposta_1" type="checkbox" value="correta">
+			    Enterprise Service Bus.
+			  </label>
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta1_resposta_2" type="checkbox" value="">
+			    Enterprise Content Management.
+			  </label>
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta1_resposta_3" type="checkbox" value="">
+			    Nenhuma das alternativas.
+			  </label>
+			</div>
+
+			<p>Qual tipo de Arquitetura utilizada pelo ESB?</p>
+			<div class="form-check">
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta2_resposta_1" type="checkbox" value="correta">
+			   	Service Oriented Architecture.
+			  </label>
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta2_resposta_2" type="checkbox" value="errado">
+			    Service Direction Architecture.
+			  </label>
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta2_resposta_3" type="checkbox" value="errado">
+			    Nenhuma das alternativas.
+			  </label>
+			</div>
+
+			<p>O card Analytics pode ser classificado como qual tipo de ferramenta?</p>
+			<div class="form-check">
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta3_resposta_1" type="checkbox" value="correta">
+			   	Business Analytics.
+			  </label>
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta3_resposta_2" type="checkbox" value="errado">
+			    Business Intelligence.
+			  </label>
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta3_resposta_3" type="checkbox" value="errado">
+			    Nenhuma das alternativas.
+			  </label>
+			</div>
+
+			<p>É possível excluir usuários no Fluig?</p>
+			<div class="form-check">
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta4_resposta_1" type="checkbox" value="errado">
+			   	Sim.
+			  </label>
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta4_resposta_2" type="checkbox" value="correta">
+			    Não, apenas desativá-los.
+			  </label>
+			  <label class="form-check-label">
+			    <input class="form-check-input" name="pergunta4_resposta_3" type="checkbox" value="errado">
+			    Somente usuários que não forem administradores.
+			  </label>
+			</div>
+		</div>
+	</section>
+	<section id="correcao">
+		<div class="col-md-12 ">
+			<p class="font-weight-bold text-center">Esse candidato pontuou <span id="nota"></span> de 4 pontos disponíveis</p>
+			
+			<div class="panel panel-info">
+					<div class="panel-heading">
+						Deseja prosseguir com o candidato?
+					</div>
+					<div class="panel-body">
+						<div id="camposAprovacao">
+							<input type="text" name="aprovado_qualificacao" id="aprovado_qualificacao" value="sim"/>
+							<input type="text" name="processoPai" id="processoPai" value="sim"/>
+						</div>
+						
+						<div id="botoesAprovar_qualificacao" class="row" style="margin-left:90px">
+							<div class="col-md-6" style="float:left">
+								<button class="btn btn-success" id="botaoAprovado">Sim</button>
+							</div>
+							<div class="col-md-4" style="float:right">
+								<button class="btn" id="botaoReprovado">Não</button>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+	</section>
+
+</form>
+</div>
+
+<script src="js/main.js"></script>
+<script src="/webdesk/vcXMLRPC.js"></script>
+</body>
+</html>

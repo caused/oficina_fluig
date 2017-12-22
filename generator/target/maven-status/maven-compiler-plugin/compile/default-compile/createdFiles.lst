@@ -1,0 +1,3 @@
+br\com\totvs\fluig\pdf\dto\GeneratorDTO.class
+br\com\totvs\fluig\pdf\resources\PDFResource.class
+br\com\totvs\fluig\pdf\util\PDFTools.class

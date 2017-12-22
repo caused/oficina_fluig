@@ -1,0 +1,79 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form" id="formulario">
+	<div class="container">
+		<div  class="row">
+			<div id="divJogador" class="form-group col-md-12">
+				<label for="jogador">Jogador:</label>
+				<input type="zoom"
+				name="jogador"
+				class="form-control"
+				data-zoom="{
+					'displayKey': 'Nome usuário',
+					'datasetId' : 'dsUsuariosNaoAdministradores',
+					'fields' : [
+						{
+						'field':'Nome usuário',
+						'label' : 'Nome'
+					},
+					{
+						'field' : 'Email usuário',
+						'label' : 'E-mail'
+					}
+					]
+					 
+				}"/>
+			</div>
+		</div>
+		
+		<div id="jogadorApto" class="row">
+			<div class="form-group col-md-12">
+				<label for="aptidaoJogador">Jogador está apto?</label>
+				<select name="jogadorApto" class="form-control">
+					<option value="Sim">Sim</option>
+					<option value="Não">Não</option>
+				</select>
+			</div>
+		</div>
+		
+		<div id="salarioJogador" class="row">
+			<div class="form-group col-md-12">
+				<label for="salarioJogador">Salário</label>
+				<input type="text" class="form-control" name="salarioJogador" mask="#00.000.000.000.000,00"/>
+			</div>
+		</div>
+		
+		<div id="dataSolicitacao" class="row">
+			<div class="form-group col-md-12">
+				<label for="dataSolicitacao">Data de solicitação</label>
+				<input type="text" class="form-control" name="dataSolicitacao" mask="00/00/0000"/>
+			</div>
+		</div>
+		
+		<div id="diagnostico" class="row">
+			<div class="form-group col-md-12">
+				<label for="diagnostico">Diagnóstico</label>
+				<input class="form-control" name="diagnostico" id="diagnostico"/>
+			</div>
+		</div>
+		
+		
+		<div id="nomeMedico" class="row">
+			<div class="form-group col-md-12">
+				<label for="nomeMedico">Nome do médico</label>
+				<input class="form-control" name="nomeMedico" id="nomeMedico"/>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+</body>
+</html>

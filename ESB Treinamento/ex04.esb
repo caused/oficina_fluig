@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.totvs.com/ESB/Components" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <Diagram xmi:id="_D35CQNFJEeeGAZvnvXnoKg" comments="">
+    <Receiver xmi:type="WSReceiver" xmi:id="_E_h_wNFJEeeGAZvnvXnoKg" name="WSReceiver" errorInterval="600" enabled="true" interval="30" url="http://lab.fluig.com/webdesk/ECMColleagueService?wsdl" type="0" operation="getColleagues" useSSL="false" paramsTokens="username~Text~gustavo.alves|password~Text~gustavo@123|companyId~Number~20" useAuthentication="false" passwordType="0" useJAXBCustom="false" sslKeystoreType="JKS" sslTruststoreType="JKS">
+      <Relations xmi:type="Link" xmi:id="_PdY-YNFMEeeGAZvnvXnoKg" Source="_E_h_wNFJEeeGAZvnvXnoKg" Target="_NoWvYNFMEeeGAZvnvXnoKg"/>
+    </Receiver>
+    <Sender xmi:type="FileSender" xmi:id="_QpJHMNFJEeeGAZvnvXnoKg" name="RespostaWS" errorInterval="5" tries="3" persist="false" directory="academy\respostaWS" fileName="resposta${uniqueID}.xml" append="false"/>
+    <ServiceEngine xmi:type="ForEach" xmi:id="_NoWvYNFMEeeGAZvnvXnoKg" name="Splitter0" nodePath="//item" type="1" tokenizerContentType="0" tokenizerRule="0" tokenizerToken="" tokenizerEndToken="" tokenizerUseRegExp="false" tokenizerGroupMessages="0" tokenizerIncludeTokens="false" tokenizerInheridNamespaceTagName="" tokenizerStreaming="false" parallelProcessingEnable="false" parallelProcessingCorePoolSize="8" parallelProcessingMaximumPoolSize="16" parallelProcessingKeepAliveTime="0">
+      <Relations xmi:type="Link" xmi:id="_YaW5YNFMEeeGAZvnvXnoKg" Source="_NoWvYNFMEeeGAZvnvXnoKg" Target="_QpJHMNFJEeeGAZvnvXnoKg"/>
+    </ServiceEngine>
+  </Diagram>
+  <notation:Diagram xmi:id="_D35CQdFJEeeGAZvnvXnoKg" type="Esb" element="_D35CQNFJEeeGAZvnvXnoKg" name="ex04.esb" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_E_j08NFJEeeGAZvnvXnoKg" type="2007" element="_E_h_wNFJEeeGAZvnvXnoKg" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_E_j08tFJEeeGAZvnvXnoKg" type="5007"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E_j08dFJEeeGAZvnvXnoKg" x="30" y="30"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_QpJuQNFJEeeGAZvnvXnoKg" type="2027" element="_QpJHMNFJEeeGAZvnvXnoKg" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_QpJuQtFJEeeGAZvnvXnoKg" type="5027"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QpJuQdFJEeeGAZvnvXnoKg" x="30" y="230"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_NoWvYdFMEeeGAZvnvXnoKg" type="2011" element="_NoWvYNFMEeeGAZvnvXnoKg" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_NoXWcNFMEeeGAZvnvXnoKg" type="5011"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NoWvYtFMEeeGAZvnvXnoKg" x="40" y="130"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_D35CQtFJEeeGAZvnvXnoKg"/>
+    <edges xmi:type="notation:Connector" xmi:id="_PdZlcNFMEeeGAZvnvXnoKg" type="4001" element="_PdY-YNFMEeeGAZvnvXnoKg" source="_E_j08NFJEeeGAZvnvXnoKg" target="_NoWvYdFMEeeGAZvnvXnoKg">
+      <styles xmi:type="notation:FontStyle" xmi:id="_PdZlcdFMEeeGAZvnvXnoKg" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PdZlctFMEeeGAZvnvXnoKg" points="[0, 0, 0, -60]$[0, 60, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PdaMgNFMEeeGAZvnvXnoKg" id="(0.494949494949495,1.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MRZuENFNEeeGAZvnvXnoKg" id="(0.49382716049382713,0.0)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_YaXgcNFMEeeGAZvnvXnoKg" type="4001" element="_YaW5YNFMEeeGAZvnvXnoKg" source="_NoWvYdFMEeeGAZvnvXnoKg" target="_QpJuQNFJEeeGAZvnvXnoKg">
+      <styles xmi:type="notation:FontStyle" xmi:id="_YaXgcdFMEeeGAZvnvXnoKg" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_YaXgctFMEeeGAZvnvXnoKg" points="[0, 0, 0, -60]$[0, 60, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_YaYHgNFMEeeGAZvnvXnoKg" id="(0.49382716049382713,1.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MRZuEdFNEeeGAZvnvXnoKg" id="(0.5,0.0)"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>

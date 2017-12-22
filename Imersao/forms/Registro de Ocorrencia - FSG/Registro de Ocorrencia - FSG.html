@@ -1,0 +1,630 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<link type="text/css" rel="stylesheet" href="css/custom.css"/>
+	<script type="text/javascript" src="js/jquery.mask.js"></script>
+	
+</head>
+<body>
+	<div class="fluig-style-guide">
+	<div class="container">
+		<form name="form" role="form">
+			<input type="hidden" name="status" id="status" value="" />
+			<input type="hidden" name="responsaveis" id="responsaveis">
+			<input type="hidden" name="responsavelRegistroPlano" id="responsavelRegistroPlano">
+			
+			<div class="panel panel-default" >
+				<div class="panel-body">
+					<h2>i18n.translate("titulo")</h1>
+				</div>
+			</div>
+			
+			<div class="note-tabs">
+				<ul class="nav nav-tabs" role="tablist">					        
+				   <li class="active"><a href="#divDados" data-toggle="tab"><strong>i18n.translate("legend_ocor")</strong></a></li>
+			       <li><a href="#divDetalhes" data-toggle="tab"><strong>i18n.translate("legend_detalhes")</strong></a></li>
+			       <li><a href="#divOcorrencia" data-toggle="tab"><strong>i18n.translate("legend_desc_ocor")</strong></a></li>
+			    </ul>
+			    <div class="tab-content">
+					<div id="divDados" class="tab-pane active">
+					    
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<label for="nomeProduto">i18n.translate("Num_ocor")</label> 
+										<input type="text" class="form-control" id="cdOcorrencia" name="cdOcorrencia" readonly="true">
+									</div>
+								</div>
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<label for="nmUsuario" >i18n.translate("usuario")</label> 
+										<input type="hidden" id="matriculaUsuario" name="matriculaUsuario">
+						      			<input type="text" class="form-control" id="nmUsuario" name="nmUsuario" readonly="true">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<label for="dtRegistro">i18n.translate("data_reg")</label> 
+										<input type="text" class="form-control" id="dtRegistro" name="dtRegistro" readonly="true">
+									</div>
+								</div>
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<label for="dtOcorrencia">i18n.translate("data_oco")</label> 
+										<input id="dtOcorrencia" name="dtOcorrencia" class="form-control" type="text" readonly="true" />
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>			
+					
+					<div id="divDetalhes" class="tab-pane">
+					    
+		
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<label for="nmTipoAcao" >i18n.translate("tipo_acao")</label> 
+										<select id="nmTipoAcao" name="nmTipoAcao" class="form-control">
+							      			<option value=""></option>
+											<option value="A&ccedil;&atilde;o Preventiva">A&ccedil;&atilde;o Preventiva</option>
+											<option value="A&ccedil;&atilde;o Corretiva">A&ccedil;&atilde;o Corretiva</option>
+											<option value="Melhoria">Melhoria</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<label for="nmUnidade" >i18n.translate("unidade")</label> 
+										<select id="nmUnidade" name="nmUnidade" class="form-control" >
+											<option value=""></option>
+											<option value="SFF">SFF</option>
+											<option value="SUT">SUT</option>
+											<option value="SME">SME</option>
+											<option value="CORPORATIVO">CORPORATIVO</option>
+											<option value="TIPI">TIPI</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<label for="nmArea" >i18n.translate("area")</label> 
+										<div class="campoEspelhoZoom">
+											<input type="text" name="nmArea" id="nmArea" class="form-control"/>
+										</div>
+										<div class="campoZoom">
+											<input type="zoom" name="nmAreaZoom" class="form-control"
+												data-zoom="{
+													'displayKey': 'AREA' ,
+													'datasetId' : 'ds_Areas',
+													'fields' : [
+														{
+															'field': 'AREA', 
+															'label': 'Nome da área'
+														}
+													]
+												}"
+											/>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<label for="nmOrigem" >i18n.translate("origem")</label> 
+										<div class="campoEspelhoZoom">
+											<input type="text" name="nmOrigem" id="nmOrigem" class="form-control"/>
+										</div>
+										<div class="campoZoom">
+											<input type="zoom" name="nmOrigemZoom" class="form-control"
+												data-zoom="{
+													'displayKey': 'ORIGEM' ,
+													'datasetId' : 'ds_Origem',
+													'fields' : [
+														{
+															'field': 'ORIGEM', 
+															'label': 'Origem'
+														}
+													]
+												}"
+											/>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<label for="nmCriticidade" >i18n.translate("criticidade")</label>
+										<div class="campoEspelhoZoom">
+											<input type="text" name="nmCriticidade" id="nmCriticidade" class="form-control"/>
+										</div>
+										<div class="campoZoom">
+											<input type="zoom" name="nmCriticidadeZoom" class="form-control"
+												data-zoom="{
+													'displayKey': 'CRITICIDADE' ,
+													'datasetId' : 'ds_Criticidade',
+													'fields' : [
+														{
+															'field': 'CRITICIDADE', 
+															'label': 'Nível de criticidade'
+														}
+														]
+												}"
+											/>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<label for="fgContencao">
+									    	<input type="checkbox" name="fgContencao" id="fgContencao" onclick="enableFieldContention()"> 
+									    	i18n.translate("nec_contencao")
+									    </label>
+									</div>
+							   </div>
+							</div>
+							
+							
+							<div class="row">
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<label for="fgFoodStamps" >i18n.translate("oco_reinc")</label>
+									<div class="form-group">
+									  	<label for="fgOcorrenciaNaoReincidente" class="radio-inline">
+									    	<input type="radio" checked="checked" name="fgOcorrenciaReincidente" id="fgOcorrenciaNaoReincidente" value="Nao" onclick="enabledFieldCdOccurrenceRecidivist()">
+									    	i18n.translate("nao")
+									  	</label>
+										<label for="fgOcorrenciaReincidente" class="radio-inline">
+									    	<input type="radio" name="fgOcorrenciaReincidente" id="fgOcorrenciaReincidente" value="Sim" onclick="enabledFieldCdOccurrenceRecidivist()">
+									    	i18n.translate("sim")
+									  	</label>
+									</div>
+								</div>
+								
+								<div class="col-md-6 col-xs-12 col-sm-12" id="divReincidente">
+									<div class="form-group">
+									<label for="cdOcorrenciaReincidente">Nº da Não Conformidade Reincidente</label>
+										  	<div class="campoEspelhoZoom">
+										  		<input type="text" name="cdOcorrenciaReincidente" id="cdOcorrenciaReincidente"/>
+										  	</div>
+										  	<div class="campoZoom">
+										  		<input type="zoom" name="cdOcorrenciaReincidenteZoom" class="form-control"
+													data-zoom="{
+														'displayKey': 'cdOcorrencia' ,
+														'datasetId' : 'ecm_kgq_ro',
+														'fields' : [
+															{
+																'field': 'cdOcorrencia', 
+																'label': 'Solicitacao'
+															},
+															{
+																'field': 'dsOcorrencia', 
+																'label': 'Descricao'
+															}
+															]
+													}"
+												/>
+										  	</div>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div class="row">
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-6 col-xs-12 col-sm-12">
+											<div class="form-group">
+												<label for="dsContencao" >i18n.translate("desc_conte")</label>
+												<textarea class="form-control" rows="3" cols="8" id="dsContencao" name="dsContencao"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+							
+						</div>
+					</div>
+					
+										
+					<div id="divOcorrencia" class="tab-pane">
+					    
+						<div class="panel-body">
+							
+							<div class="row">
+								<div class="col-md-6 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<label for="dsOcorrencia" >i18n.translate("desc_oco")</label>
+										<textarea class="form-control" rows="3" cols="8" id="dsOcorrencia" name="dsOcorrencia"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+
+				</div>
+			</div>	
+			<div id="divAnalise">
+					<div id="divAnaliseCausa" class="panel panel-default">
+							<div class="row">
+								<div class="note-tabs">
+									<ul class="nav nav-tabs" role="tablist">
+								        <li class="active"><a href="#navbar-fixed-html" data-toggle="tab"><strong>i18n.translate("tab_desc_analise")</strong></a></li>
+								        <li><a href="#navbar-fixed-css" data-toggle="tab"><strong>i18n.translate("tab_ishikawa")</strong></a></li>
+								        <li><a href="#navbar-fixed-js" data-toggle="tab"><strong>i18n.translate("tab_porques")</strong></a></li>
+								    </ul>
+		
+		
+									<div class="tab-content">
+								        <div class="tab-pane active" id="navbar-fixed-html">
+								            <div class="row">
+								            	<div class="col-md-12 col-xs-12 col-sm-12">
+									                <div class="form-group">
+												    	<label for="dsAcoesExecutadas" >i18n.translate("desc_analise")</label>
+										      			<textarea class="form-control" rows="3" cols="8" id="dsAnaliseCausa" name="dsAnaliseCausa"></textarea>
+												  	</div>
+												</div>
+								            </div>
+								        </div>
+								        
+								        
+								        <div class="tab-pane" id="navbar-fixed-css">
+								            <div class="row">
+								                <div id="tab-ishikawa" class="tab_content">
+													<table id="tabIshikawa" border="0" cellpadding="1" cellspacing="1" summary="InformaÃ§Ãµes do gr&aacute;fico Ishikawa" style="min-width: 200px;">
+														<tr>
+															<td>
+															</td>
+															<td>
+																<label class="labelLeft">i18n.translate("ishikawa_medicao")</label>					
+															</td>
+															<td>
+																<label class="labelLeft">i18n.translate("ishikawa_mao_obra")</label>					
+															</td>
+															<td>
+																<label class="labelLeft">i18n.translate("ishikawa_material")</label>
+															</td>
+														</tr>
+														<tr>	
+															<td>
+																<label>i18n.translate("ishikawa_principalS")</label>
+															</td>				
+															<td class="tdPrincipalSuperior">
+																<textarea name="dsMedicaoPrincipal" id="dsMedicaoPrincipal" class="form-control" rows="3" cols="8"></textarea>
+															</td>
+															<td class="tdPrincipalSuperior">
+																<textarea name="dsMaodeObraPrincipal" id="dsMaodeObraPrincipal" class="form-control" rows="3" cols="8"></textarea>
+															</td>
+															<td class="tdPrincipalSuperior">
+																<textarea name="dsMaterialPrincipal" id="dsMaterialPrincipal" class="form-control" rows="3" cols="8"></textarea>
+															</td>
+														</tr>
+														<tr>	
+															<td>
+																<label>i18n.translate("ishikawa_secundarioS")</label>
+															</td>				
+															<td class="tdSecundarioSuperior">
+																<textarea name="dsMedicaoSecundaria" id="dsMedicaoSecundaria" class="form-control"></textarea>
+															</td>
+															<td class="tdSecundarioSuperior">
+																<textarea name="dsMaodeObraSecundaria" id="dsMaodeObraSecundaria" class="form-control"></textarea>
+															</td>
+															<td class="tdSecundarioSuperior">
+																<textarea name="dsMaterialSecundario" id="dsMaterialSecundario" class="form-control"></textarea>
+															</td>
+															<td rowspan="2">
+																<img src="img/head.png" alt="">
+															</td>
+															<td rowspan="2">
+																<label class="labelLeft">i18n.translate("ishikawa_efeito")</label>
+																<textarea name="dsEfeito" id="dsEfeito" class="form-control"></textarea>
+															</td>
+														</tr>
+														<tr>	
+															<td>
+																<label>i18n.translate("ishikawa_secundarioI")</label>
+															</td>				
+															<td class="tdSecundarioInferior">
+																<textarea name="dsMeioAmbienteSecundario" id="dsMeioAmbienteSecundario" class="form-control"></textarea>
+															</td>
+															<td class="tdSecundarioInferior">
+																<textarea name="dsMetodoSecundario" id="dsMetodoSecundario" class="form-control"></textarea>
+															</td>
+															<td class="tdSecundarioInferior">
+																<textarea name="dsMaquinaSecundario" id="dsMaquinaSecundario" class="form-control"></textarea>
+															</td>
+														</tr>
+														<tr>	
+															<td>
+																<label>i18n.translate("ishikawa_principalI")</label>
+															</td>				
+															<td class="tdPrincipalInferior">
+																<textarea name="dsMeioAmbientePrincipal" id="dsMeioAmbientePrincipal" class="form-control" rows="3" cols="8"></textarea>
+															</td>
+															<td class="tdPrincipalInferior">
+																<textarea name="dsMetodoPrincipal" id="dsMetodoPrincipal" class="form-control" rows="3" cols="8"></textarea>
+															</td>
+															<td class="tdPrincipalInferior">
+																<textarea name="dsMaquinaPrincipal" id="dsMaquinaPrincipal" class="form-control" rows="3" cols="8"></textarea>
+															</td>
+														</tr>
+														<tr>
+															<td>
+															</td>
+															<td>
+																<label class="labelLeft">i18n.translate("ishikawa_meio_amb")</label>					
+															</td>
+															<td>
+																<label class="labelLeft">i18n.translate("ishikawa_metodo")</label>
+															</td>
+															<td>
+																<label class="labelLeft">i18n.translate("ishikawa_maquina")</label>
+															</td>
+														</tr>
+													</table>
+												</div>
+								            </div>
+								        </div>
+						    
+						        
+								        <div id="navbar-fixed-js" class="tab-pane">
+								            <div class="row">
+								                <table summary="Informa&ccedil;&otilde;es das Perguntas e Respostas" width="100%">
+													<thead>
+														<tr>
+															<th>&nbsp;</th>
+															<th>i18n.translate("pergunta")</th>
+															<th>i18n.translate("resposta")</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>
+																1&ordm;
+															</td>
+															<td>
+																<textarea id="cincopq_pergunta_1" name="cincopq_pergunta_1" class="form-control" rows="3" cols="6"></textarea> 
+															</td>
+															<td>
+																<textarea id="cincopq_resposta_1" name="cincopq_resposta_1" class="form-control" rows="3" cols="6"></textarea>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																2&ordm;
+															</td>
+															<td>
+																<textarea id="cincopq_pergunta_2" name="cincopq_pergunta_2" class="form-control" rows="3" cols="6"></textarea> 
+															</td>
+															<td>
+																<textarea id="cincopq_resposta_2" name="cincopq_resposta_2" class="form-control" rows="3" cols="6"></textarea>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																3&ordm;
+															</td>
+															<td>
+																<textarea id="cincopq_pergunta_3" name="cincopq_pergunta_3" class="form-control" rows="3" cols="6"></textarea> 
+															</td>
+															<td>
+																<textarea id="cincopq_resposta_3" name="cincopq_resposta_3" class="form-control" rows="3" cols="6"></textarea>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																4&ordm;
+															</td>
+															<td>
+																<textarea id="cincopq_pergunta_4" name="cincopq_pergunta_4" class="form-control" rows="3" cols="6"></textarea> 
+															</td>
+															<td>
+																<textarea id="cincopq_resposta_4" name="cincopq_resposta_4" class="form-control" rows="3" cols="6"></textarea>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																5&ordm;
+															</td>
+															<td>
+																<textarea id="cincopq_pergunta_5" name="cincopq_pergunta_5" class="form-control" rows="3" cols="6"></textarea> 
+															</td>
+															<td>
+																<textarea id="cincopq_resposta_5" name="cincopq_resposta_5" class="form-control" rows="3" cols="6"></textarea>
+															</td>
+														</tr>
+														<tr>
+															<td style="text-align: center">
+																&nbsp;
+															</td>
+															<td colspan="2" style="text-align: center">
+																i18n.translate("causa_raiz")
+															</td>
+														</tr>
+														<tr>		
+															<td style="text-align: center">
+																&nbsp;
+															</td>
+															<td colspan="2" style="text-align: center">
+																<textarea id="cincopq_causa_raiz" name="cincopq_causa_raiz" class="form-control" rows="3" cols="12"></textarea>	
+															</td>
+														</tr>
+													</tbody>
+												</table>
+								            </div>
+								        </div>
+									<!--tab-content  -->
+						    		</div>
+								<!--  note-tabs -->
+								</div>
+							<!-- row -->
+							</div>
+					<!-- panel -->
+					</div>
+					
+					
+					<div id="divPlanoAcao" class="panel panel-default">
+							<div class="row">
+								<div class="col-md-12 col-xs-12 col-sm-12">
+									<div class="form-group">
+										<button type="button" name="btIncluir" id="btIncluir" value="Adicionar" onclick="addFilho()" class="btn btn-primary btnForm">Adicionar Novo Plano de Ação</button>
+									</div>
+								</div>
+								<div id="divAtivPlano" class="col-md-12 col-xs-12 col-sm-12">
+									<table name ="ativPlano" id="ativPlano" tablename="ativPlano" noaddbutton="true" nodeletebutton="true" cellspacing="1" class="table table-striped" border="1" customFnDelete="fnCustomDelete(this)">
+										<thead>
+											<tr>
+												<th></th>
+												<th>
+													<div class="header_top_5w2h">
+														<span>i18n.translate("1_w")</span>
+													</div>
+													<div class="header_bottom_5w2h">
+														<span>i18n.translate("1_w_acao")</span>
+													</div>
+												</th>
+												<th>
+													<div class="header_top_5w2h">
+														<span>i18n.translate("2_w")</span>
+													</div>
+													<div class="header_bottom_5w2h">
+														<span>i18n.translate("2_w_acao")</span>
+													</div>
+												</th>
+												<th>
+													<div class="header_top_5w2h">
+														<span>i18n.translate("3_w")</span>
+													</div>
+													<div class="header_bottom_5w2h">
+														<span>i18n.translate("3_w_acao")</span>
+													</div>
+												</th>
+												<th>
+													<div class="header_top_5w2h">
+														<span>i18n.translate("4_w")</span>
+													</div>
+													<div class="header_bottom_5w2h">
+														<span>i18n.translate("4_w_acao")</span>
+													</div>
+												</th>
+												<th>
+													<div class="header_top_5w2h">
+														<span>i18n.translate("5_w")</span>
+													</div>
+													<div class="header_bottom_5w2h">
+														<span>i18n.translate("5_w_acao")</span>
+													</div>
+												</th>
+												<th>
+													<div class="header_top_5w2h">
+														<span>i18n.translate("1_h")</span>
+													</div>
+													<div class="header_bottom_5w2h">
+														<span>i18n.translate("1_h_acao")</span>
+													</div>
+												</th>
+												<th>
+													<div class="header_top_5w2h">
+														<span>i18n.translate("2_h")</span>
+													</div>
+													<div class="header_bottom_5w2h">
+														<span>i18n.translate("2_h_acao")</span>
+													</div>
+												</th>
+												<th class="acompanhamento">
+													<div class="header_top_5w2h">
+														<span>i18n.translate("acomp")</span>
+													</div>
+													<div class="header_bottom_5w2h">
+														<span>i18n.translate("acomp_situacao")</span>
+													</div>
+												</th>
+												<th colspan="2" class="eficacia">
+													<div class="header_top_5w2h">
+														<span>i18n.translate("eficacia")</span>
+													</div>
+													<div class="header_bottom_5w2h">
+														<span style="width:50%">i18n.translate("sim")</span>
+														<span style="width:50%">i18n.translate("nao")</span>
+													</div>
+												</th>
+												<th class="eficacia">
+													<div class="header_top_5w2h">
+														<span>i18n.translate("eficacia")</span>
+													</div>
+													<div class="header_bottom_5w2h">
+														<span style="width:50%">i18n.translate("observacoes")</span>
+													</div>
+												</th>
+											</tr>
+										</thead>
+										<tr>
+											<td><span id="btnDelete" class="fluigicon fluigicon-trash fluigicon-md btnForm" onclick="Javascript:fnCustomDelete(this)" style="cursor:pointer"></span></td>
+											<td><textarea style="width: 220px" id="w1" name="w1" rows="2" cols="5" class="form-control"></textarea></td>
+											<td>
+												<div class="form-group">
+													<div class="paiFilho">
+														<input type="text" name="w2Responsavel" id="w2Responsavel" class="form-control"/>
+													</div>
+									                <div class ="paiFilhoZoom">
+									                	<input style="width: 250px" id="w2" type="zoom" name="w2" class="form-control"
+															data-zoom="{
+																'displayKey': 'colleagueName' ,
+																'datasetId' : 'colleague',
+																'fields' : [
+																	{
+																		'field': 'colleagueName', 
+																		'label': 'Nome'
+																	},
+																	{
+																		'field' : 'colleagueId',
+																		'label' : 'Matricula'
+																	}
+																	]
+															}"
+														/>
+									                </div>
+										    	</div>
+												
+											</td>
+											<td><input type="text" id="w3" name="w3"  class="form-control input-sm"  style="min-width: 150px !important"/></td>
+											<td><input type="text" id="w4" name="w4"  class="form-control input-sm" style="min-width: 150px !important"/></td>
+											<td><textarea style="width: 220px" id="w5" name="w5" rows="2" cols="5" class="form-control"></textarea></td>
+											<td><textarea style="width: 220px" id="h1" name="h1" rows="2" cols="5" class="form-control"></textarea></td>
+											<td><input type="text" id="h2" name="h2"  class="form-control input-sm" style="min-width: 150px !important"/></td>
+											<td class="acompanhamento"><textarea style="width: 220px" id="situacao" name="situacao" rows="2" cols="5" class="form-control"></textarea></td>
+											<td class="eficacia"><div class="form-group"><label for="eficazSim"><input type="radio" name="eficaz" id="eficazSim" value="Sim" class="radioEficaz"></label></div></td>
+											<td class="eficacia"><div class="form-group"><label for="eficazNao"><input type="radio" name="eficaz" id="eficazNao" value="Nao" class="radioEficaz"></label></div></td>
+											<td class="eficacia"><textarea style="width: 220px" id="dsEficacia" name="dsEficacia" rows="2" cols="5" class="form-control"></textarea></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+					</div>
+			</div>
+					<!-- panel -->
+		</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/custom.js"></script>
+	<script type="text/javascript" src="js/enableFields.js"></script>
+</body>
+</html>

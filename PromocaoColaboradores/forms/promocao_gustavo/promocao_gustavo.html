@@ -1,0 +1,208 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+	
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<div class="container-fluid">
+		 <section class="col-md-12">
+		 	<article id="textoValidarCorrecao">
+		 		<h1 class="text-muted">Clique em "Enviar" para validarmos a nota do candidato</h1>
+		 	</article>
+            <article id="formulario_colaborador">
+            	<div class="panel with-nav-tabs panel-default">
+	                <div class="panel-heading">
+	                        <ul class="nav nav-tabs">
+	                            <li class="active"><a href="#tab1primary" data-toggle="tab">Dados pessoais</a></li>
+	                            <li><a href="#tab2primary" data-toggle="tab">Contato</a></li>
+	                            <li><a href="#tab3primary" data-toggle="tab">Informação acadêmica</a></li>
+	                        </ul>
+	                </div>
+	                <div class="panel-body">
+	                    <div class="tab-content">
+	                        <div class="tab-pane fade in active" id="tab1primary">
+								<div class="row">
+									<div class="form-group col-md-6">
+										<label >Nome</label>
+										<input class="form-control" name="nomeColaborador" id="nomeColaborador" type="text" readonly/>
+									</div>
+									<div id="divVagaColaborador" class="form-group col-md-6">
+										<label>Vaga pretendida</label>
+										<input type="text" class="form-control" name="vagaColaborador" id="vagaColaborador"/>
+										
+									</div>
+									<div id="divVagaColaboradorZoom" class="form-group col-md-6">
+										<label>Vaga pretendida</label>
+										<input class="form-control" name="vagaColaboradorZoom" id="vagaColaborador" type="zoom"
+										data-zoom="{
+											'datasetId' : 'datasetVagas_gustavo',
+											'displayKey' : 'Vaga',
+											'placeholder' : 'Selecione a vaga pretendida',
+											'fields' : [
+												{
+													'field' : 'Vaga',
+													'label' : 'Nome da vaga'
+												},
+												{
+													'field' : 'Área',
+													'label' : 'Área da vaga'
+												},
+												{
+													'field' : 'Gestor',
+													'label' : 'Gestor da vaga'
+												}
+											]
+										}"/>
+									</div>
+								</div>
+								<div class="row">
+									<div id = "divGestorColaborador" class="form-group col-md-6">
+										<label>Gestor: </label>
+										<input type="text" class="form-control" name="gestorColaborador" id="gestorColaborador"/>
+									</div>
+									<div id = "divGestorColaboradorZoom" class="form-group col-md-6">
+										<label>Gestor: </label>
+										<input class="form-control" name="gestorColaboradorZoom" id="gestorColaboradorZoom" type="zoom"
+										data-zoom="{
+											'datasetId' : 'colleague',
+											'displayKey' : 'colleagueName',
+											'placeholder' : 'Selecione o nome do seu gestor',
+											'fields' : [
+												{
+													'field' : 'colleagueName',
+													'label' : 'Nome'
+												},
+												{
+													'field' : 'mail',
+													'label' : 'E-mail'
+												}
+											]
+										}"/>
+									</div>
+									<div class="form-group col-md-6">
+										<label>Data de nascimento: </label>
+										<input class="form-control" name="dataColaborador" id="dataColaborador" type="text" mask="00/00/0000"/>
+									</div>
+								</div>
+								<div class="row">
+									<div id="divUnidadeColaborador" class="form-group col-md-12">
+										<label>Unidade: </label>
+										<input type="text" class="form-control" name="unidadeColaborador" id="unidadeColaborador"/>
+									</div>
+									<div id="divUnidadeColaboradorZoom" class="form-group col-md-12">
+										<label>Unidade: </label>
+										<input class="form-control" name="unidadeColaboradorZoom" id="unidadeColaboradorZoom" type="zoom"
+										data-zoom="{
+											'datasetId' : 'unidade_gustavo',
+											'displayKey' : 'Unidade',
+											'placeholder' : 'Selecione sua unidade',
+											'fields' : [
+												{
+													'field' : 'Unidade',
+													'label' : 'Unidade'
+												}
+											]
+										}"/>
+									</div>
+								</div>
+								
+							</div>
+	                        <div class="tab-pane fade" id="tab2primary">
+	                       		<div class="form-group col-md-6">
+									<label>E-mail </label>
+									<input readonly class="form-control" name="emailColaborador" id="emailColaborador" type="text"/>
+								</div>
+								<div class="form-group col-md-12">
+									<label>Telefone </label>
+									<input class="form-control" name="telefoneColaborador" id="telefoneColaborador" type="text" mask="(00) 90000-0000"/>
+								</div>
+	                        </div>
+	                        <div class="tab-pane fade" id="tab3primary">
+	                        	<table class="table table-striped" tablename="tb_qualificacao" addbuttonlabel="Adicionar" nodeletebutton="true">
+	                        			<thead>
+		                        			<tr>
+		                        				<th>Escolaridade</th>
+		                        				<th>Grau de instrução</th>
+		                        			</tr>
+		                        		</thead>
+		                        		<tbody>
+		                        			<tr>
+		                        				<td><input type="text" name="qualificacaoColaborador" class="form-control"/></td>
+		                        				<td>
+		                        					<select name="nivelColaborador" class="form-control">
+		                        						<option value="incompleto">Incompleto</option>
+		                        						<option value="Em andamento">Em andamento</option>
+		                        						<option value="Completo">Completo</option>
+		                        					</select>
+		                        				</td>	
+		                        			</tr>
+		                        		</tbody>		
+	                        	</table>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+            </article>
+            <article id="painel_aprovar_colaborador">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Qual a situação do candidato?
+					</div>
+					<div class="panel-body">
+						<input type="hidden" name="aprovado_qualificacao" id="aprovado_qualificacao" value="sim"/>
+						<input type="hidden" name="aprovado_prova" id="aprovado_prova" value="sim"/>
+						
+						<div id="botoesAprovar_qualificacao" class="row" style="margin-left:90px">
+							<div class="col-md-6" style="float:left">
+								<button class="btn btn-success" id="botaoAprovado">Aprovado</button>
+							</div>
+							<div class="col-md-4" style="float:right">
+								<button class="btn" id="botaoReprovado">Reprovado</button>
+							</div>
+						</div>
+						<br/>
+						<div id="botoesModalidadeProva" class="row">
+							<select name="modalidadeProva" id="modalidadeProva" class="form-control">
+								<option>Selecione uma opção</option>
+								<option value="remoto">Remoto</option>
+								<option value="presencial">Presencial</option>
+							</select>
+						</div>
+					</div>
+				</div>            	
+            </article>
+            
+            <article id="entrevista_colaborador">
+            	<div class="form-group col-md-12">
+            		<label>Perfil Comportamental</label>
+            		<textarea cols="80" rows="4" class="form-control" name="perfilComportamental" id="perfilComportamental" ></textarea>
+            	</div>
+            	<div class="form-group col-md-12">
+            		<label>Perfil Técnico</label>
+            		<textarea cols="80" rows="4" class="form-control" name="perfilTecnico" id="perfilTecnico" ></textarea>
+            	</div>
+            	<div class="form-group col-md-12">
+            		<label>Evolução</label>
+            		<textarea cols="80" rows="4" class="form-control" name="evolucao" id="evolucao" ></textarea>
+            	</div>
+            	<div class="form-group col-md-12">
+            		<label>Comentários gerais</label>
+            		<textarea cols="80" rows="4" class="form-control" name="comentarios" id="comentarios" ></textarea>
+            	</div>
+            </article>
+            
+        </section>
+	</div>
+</form>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

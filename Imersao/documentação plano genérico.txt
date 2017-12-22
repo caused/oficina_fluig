@@ -1,0 +1,36 @@
+﻿COMMIT----------------------------------------------------------------------------------------------------------------
+
+67093 - forms auxiliares refatorados
+
+GRUPOS----------------------------------------------------------------------------------------------------------------
+
+Criado o grupo "Qualidade"
+
+FORMS-----------------------------------------------------------------------------------------------------------------
+
+Forms refatorados para o style-guide
+
+--cadArea
+ 3333 - Cadastro de Área -> cadArea
+ Atualização para a versão 1.6 e uso do style-guide;
+ 
+ Reorganização do código;
+ 
+ Remoção de campos que estavam invisíveis e que não eram utilizados
+  -nmResponsavelArea
+  -nmMatricRespArea
+  
+ Traduções refeitas;
+ 
+ Reorganização do código
+  
+--cadCriticidade
+ Cadastro de Criticidade -> cadCriticidade
+ Atualização para a versão 1.6 e uso do style-guide;
+ 
+ Traduções refeitas;
+ 
+--cadOrigem
+ Criação de form complementar para adicionar as Origens dos planos de ação
+ 
+ Traduções criadas

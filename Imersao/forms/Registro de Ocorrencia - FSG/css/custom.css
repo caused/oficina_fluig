@@ -1,0 +1,178 @@
+/* custom */
+
+#divContencao, #divPlanoAcao, #divAnaliseCausa, #divReincidente{
+	display: none;;
+}
+
+.required::after{
+	content: "*";
+	color: red;
+}
+
+#divAtivPlano{
+    overflow-x: auto;
+	
+}
+
+.header_top_5w2h{
+	width: 100%;
+    min-height: 35px;
+    text-align: center;
+    vertical-align: middle;
+    display: table;
+    border-bottom: 1px solid #ccc;
+}
+
+.header_bottom_5w2h{
+    width: 100%;
+    min-height: 20px;
+    text-align: center;
+    display: table;
+}
+
+.header_top_5w2h span,
+.header_bottom_5w2h span{
+    display: table-cell;
+    vertical-align: middle;
+    line-height: normal;
+    font-size: 1.1em;
+	font-weight: 700;
+	color: #666;
+}
+
+
+#ativPlano{
+	border: 2px solid #ccc;
+}
+
+#ativPlano td, #ativPlano th, #ativPlano tr{
+	border: 1px solid #ccc;
+}
+
+#ativPlano th{
+	background-color: #eee;
+}
+
+#ativPlano>thead>tr>th{
+	border-bottom : 0px;
+}
+
+/******************************  Ishikawa *******************************/
+
+#tabIshikawa{
+	width:100%;
+}
+
+#tabIshikawa td:first-child{
+	text-align:right
+}
+
+#tabIshikawa tbody tr:nth-child(2) td, #tabIshikawa tbody tr:nth-child(5) td{
+	padding : 5px 10px;
+}
+
+#tabIshikawa tbody tr:nth-child(3) td, #tabIshikawa tbody tr:nth-child(4) td{
+	padding : 5px 10px 5px 30px;
+}
+
+#tabIshikawa tbody tr:nth-child(3) td:nth-child(5), #tabIshikawa tbody tr:nth-child(3) td:nth-child(6){
+	padding : 0px;
+}
+
+.tdPrincipalSuperior {
+	padding:5px;
+	background:url('img/up_first.png') center no-repeat; 
+	padding-left:20px
+}
+
+.tdSecundarioSuperior{
+	padding:5px;
+	background:url('img/up_second.png') center no-repeat; 
+	padding-left:50px
+}
+
+.tdSecundarioInferior{
+	padding:5px;
+	background:url('img/down_second.png') center no-repeat; 
+	padding-left:50px
+}
+
+.tdPrincipalInferior{
+	padding:5px;
+	background:url('img/down_first.png') center no-repeat; 
+	padding-left:20px
+}
+
+.dsPrincipal{
+	height:70;
+	width:180;
+	margin-left:1px;
+}
+
+.dsCincopqCausaRaiz{
+	height:70;
+	width:360;
+	margin-left:1px;
+}
+
+.dsSecundario{
+	height:50;
+	width:180;
+	margin-left:20px;
+}
+
+.tdCenterRow{
+	background:url('img/center.png') center no-repeat;
+	height: 3px;
+}
+/* Sobrepondo padrão */
+
+body, body * {
+/*    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif !important; */
+/*     font-size: 11px !important; */
+}
+
+
+.panel-default {
+    border: 0px solid white !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    font-weight: normal;
+    font-size: 17px !important;
+    line-height: inherit;
+    color: rgb(51, 51, 51);
+    border-top-style: initial;
+    border-right-style: initial;
+    border-left-style: initial;
+    border-top-color: initial;
+    border-right-color: initial;
+    border-left-color: initial;
+    padding: 0px;
+    border-width: 0px 0px 1px;
+    border-image: initial;
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+label {
+    font-size: 12px !important;
+}
+
+.panel-body{
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-bottom: 25px !important;
+}
+
+
+
+
+
+
+
+
