@@ -1,21 +1,29 @@
 function afterProcessFinish(processId){
 	log.info("ID do processo: "+processId);
 
-	var documentId = anexarDocumento()
-
-	if(documentId){
-		enviaEmail(documentId, processId, getValue("WKUser"));
+	var nomeProcesso = retornarNomeProcesso(processId);
+	
+	var objeto = retornarInfoGeracao(nomeProcesso);
+	
+	if(objeto){
+		var documentId = anexarDocumento(objeto)
+		log.info("ID do documneto: "+documentId);
+		log.info("Receber e-mail: "+objeto.receberEmail)
+		if(documentId && objeto.receberEmail == "Sim"){
+			enviaEmail(documentId, processId, objeto);
+		}
+	}else{
+		throw ("Não foi possível gerar o PDF desta solicitação. Por favor, preencha o formulário de pré-cadastro localizado no GED.");
 	}
-
 }
 
-function anexarDocumento(){
+function anexarDocumento(objeto){
 	var documentId;
-	var pastaDestino = 164;
-	var usuarioAdmin = "admin";
-	var senha = "gustavo@123";
+	var pastaDestino = objeto.pasta;
+	var usuarioAdmin = objeto.usuario;
+	var senha = objeto.senha;
 	try{		
-		var file = gerarPDF();
+		var file = gerarPDF(objeto);
 
 		var serviceManager = ServiceManager.getService("ECMDocument");
 		var serviceHelper = serviceManager.getBean();
@@ -46,15 +54,15 @@ function anexarDocumento(){
 	return documentId;
 }
 
-function enviaEmail(documentId,processId, destinatario){
+function enviaEmail(documentId,processId,objeto){
 
 	var url = fluigAPI.getDocumentService().getDownloadURL(documentId);
 
 	//Monta mapa com parâmetros do template
 	var parametros = new java.util.HashMap();
-	parametros.put("SERVER_URL","http://spon010113228:8080");
+	parametros.put("SERVER_URL",objeto.servidor);
 	parametros.put("TENANT_ID", getValue("WKCompany"));
-	parametros.put("RECEIVER", obterNomeDestinatario(destinatario));
+	parametros.put("RECEIVER", obterNomeDestinatario(objeto.destinatario));
 	parametros.put("processo", processId);
 	parametros.put("link_download", url);
 
@@ -63,17 +71,17 @@ function enviaEmail(documentId,processId, destinatario){
 
 	//Monta lista de destinatários
 	var destinatarios = new java.util.ArrayList();
-	destinatarios.add(destinatario);
+	destinatarios.add(objeto.destinatario);
 	log.info("Entrou no método de enviar e-mail")
 	//Envia e-mail
 	notifier.notify(getValue("WKUser"), "meu_template", parametros, destinatarios, "text/html");
 
 }
 
-function gerarPDF(){
+function gerarPDF(objeto){
 	var clientService = fluigAPI.getAuthorizeClientService();
 
-	var atributos = JSON.stringify(obterDadosFormulario());
+	var atributos = JSON.stringify(obterDadosFormulario(objeto));
 	var data = {
 			companyId : getValue("WKCompany") + '',
 			serviceCode : 'generator',
@@ -96,14 +104,14 @@ function gerarPDF(){
 	}
 }
 
-function obterDadosFormulario(){
+function obterDadosFormulario(objeto){
 	var conteudo = [];
 
 	var idDoc = getValue("WKNumProces");
 
 	var c1 = DatasetFactory.createConstraint("documentid", idDoc, idDoc, ConstraintType.MUST);
 
-	dataSet = DatasetFactory.getDataset("ds_FormTeste", null, [c1], null);
+	dataSet = DatasetFactory.getDataset(objeto.dataset, null, [c1], null);
 
 	if(dataSet != null){
 
@@ -116,24 +124,26 @@ function obterDadosFormulario(){
 			var aux = colunas[i].length();
 
 			//se o nome da coluna conter o "metadata#" o codigo ignora
-			if(aux > 7 && colunas[i].indexOf("metadata#") != -1){
-
+			if(!(aux > 7 && colunas[i].indexOf("metadata#") != -1) && hAPI.getCardValue(colunas[i]) != null){
+				log.info("Filtro: "+objeto.filtro)
+				if(objeto.filtro != null && objeto.filtro != ""){
+					if(objeto.filtro.indexOf(colunas[i]) != -1){
+						conteudo.push("'"+colunas[i]+"':'"+hAPI.getCardValue(colunas[i])+"'");
+					}
+				}else{
+					conteudo.push("'"+colunas[i]+"':'"+hAPI.getCardValue(colunas[i])+"'");
+				}
 			}
-			else{
-
-				conteudo.push("'"+colunas[i]+"':'"+hAPI.getCardValue(colunas[i])+"'");
-			}
-
 
 		}
 		
 
 		
-		var SUPERconteudo ="{"+conteudo.join(",")+"}";
+		var json ="{"+conteudo.join(",")+"}";
 		
-		log.info("VALORES -> " + SUPERconteudo);
+		log.info("VALORES -> " + json);
 		
-		return SUPERconteudo;
+		return json;
 	}
 }
 
@@ -156,5 +166,35 @@ function criarAnexo(factory, arrayBytes){
 	anexo.setPrincipal(true);
 
 	return anexo;
+}
+
+function retornarNomeProcesso(processId){
+
+	var c1 = DatasetFactory.createConstraint("workflowProcessPK.processInstanceId", processId, processId, ConstraintType.MUST);
+
+	var dsProcesso = DatasetFactory.getDataset("workflowProcess", null, [c1], null);
+
+	return dsProcesso.getValue(0, "processId");
+
+}
+
+function retornarInfoGeracao(nomeProcesso){
+	var c1 = DatasetFactory.createConstraint("NOMEPROCESSO", nomeProcesso, nomeProcesso, ConstraintType.MUST);
+	var c2 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
+	
+	var dataset = DatasetFactory.getDataset("dsParametrizacao", null, [c1, c2], null);
+	
+	var objeto = {
+			usuario : dataset.getValue(0, "usuario"),
+			senha : dataset.getValue(0, "senha"),
+			dataset: dataset.getValue(0, "nomeDataset"),
+			pasta : dataset.getValue(0, "pasta"), 
+			receberEmail : dataset.getValue(0, "receberEmail"),
+			destinatario : dataset.getValue(0, "destinatario"),
+			servidor: dataset.getValue(0, "servidor"),
+			filtro:dataset.getValue(0, "filtro")
+	}
+	
+	return objeto;
 }
 

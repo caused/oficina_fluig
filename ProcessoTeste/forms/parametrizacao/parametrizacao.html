@@ -1,0 +1,129 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet"
+	href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+<script type="text/javascript"
+	src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript"
+	src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script type="text/javascript"
+	src="/portal/resources/style-guide/js/fluig-style-guide.min.js"
+	charset="utf-8"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4 class="panel-title">Pré-cadastro para criação de PDF</h4>
+				</div>
+				<div class="panel-body">
+					<div class="form-group col-md-12 col-xs-12 col-sm-12">
+						<label for="NOMEPROCESSO">Nome do Processo: </label>
+						<input type="zoom" id="NOMEPROCESSO" name="NOMEPROCESSO"
+						   data-zoom="{
+						   			'datasetId' : 'processDefinition',
+						   			'displayKey' : 'processId',
+						   			'fields' : [
+						   				{
+						   					'field' : 'processId',
+						   					'label' : 'Processo'
+						   				}
+						   			]
+						   }"/>
+					</div>
+					
+					<div class="form-group col-md-12 col-xs-12 col-sm-12">
+						<label for="dataset">Dataset: </label>
+						<input class="form-control" type="text" name="nomeDataset" id="nomeDataset" readonly="readonly"/>
+						<input type="hidden" name="filterTrigger" id="filterTrigger"/>
+					</div>
+					<div class="form-group col-md-12 col-xs-12 col-sm-12">
+						<label for="usuario">Usuário: </label>
+						<input type="zoom" id="usuario" name="usuario"
+						   data-zoom="{
+						   			'datasetId' : 'dsUsuariosAdministradores',
+						   			'displayKey' : 'login',
+						   			'fields' : [
+						   				{
+						   					'field' : 'login',
+						   					'label' : 'Login'
+						   				},
+						   				{
+						   					'field' : 'colleagueName',
+						   					'label' : 'Nome'
+						   				}
+						   			]
+						   }"/>
+					</div>
+					<div class="form-group col-md-12 col-xs-12 col-sm-12">
+						<label for="senha">Senha: </label>
+						<input class="form-control" type="password" name="senha" id="senha"/>
+					</div>
+					<div class="form-group col-md-12 col-xs-12 col-sm-12">
+							<label for="pasta">Pasta de destino: </label>
+							<input type="zoom" id="pasta" name="pasta"
+							   data-zoom="{
+							   			'datasetId' : 'dsPastas',
+							   			'displayKey' : 'documentId',
+							   			'fields' : [
+							   				{
+							   					'field' : 'documentId',
+							   					'label' : 'Código'
+							   				},
+							   				{
+							   					'field' : 'documentDescription',
+							   					'label' : 'Descrição'
+							   				}
+							   			]
+							   }"/>
+					</div>
+					<div class="form-group col-md-6 col-xs-12 col-sm-12">
+						<label for="email">Deseja receber por e-mail a resposta das solicitações? </label>
+						<select id="receberEmail" name="receberEmail" class="form-control">
+							<option value=""></option>
+							<option value="Sim">Sim</option>
+							<option value="Não">Não</option>
+						</select>
+					</div>
+					
+					<div id="divDestinatario" class="form-group col-md-12 col-xs-12 col-sm-12">
+						<label for="destinatario">Destinatario: </label>
+						<input type="zoom" id="destinatario" name="destinatario"
+						   data-zoom="{
+						   			'datasetId' : 'colleague',
+						   			'displayKey' : 'colleagueId',
+						   			'fields' : [
+						   				{
+						   					'field' : 'colleagueId',
+						   					'label' : 'Matrícula'
+						   				},
+						   				{
+						   					'field' : 'colleagueName',
+						   					'label' : 'Nome'
+						   				}
+						   			]
+						   }"/>
+					</div>
+					
+					<input type="hidden" name="servidor" id="servidor"/>
+					
+					<div class="form-group col-md-12 col-xs-12 col-sm-12">
+					<label for="filtro">Filtro de campos</label>
+						<input type="text" class="form-control" id="filtro" name="filtro">
+					</div>
+				</div>
+				<div class="panel-footer"></div>
+				
+			</div>
+		</form>
+	</div>
+	
+	<script src="js/destinatario.js"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script src="js/zoom.js"></script>
+	<script src="js/filtro.js"></script>
+</body>
+</html>

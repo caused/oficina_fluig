@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>novo_diagrama</processId>
-      <version>2</version>
+      <version>6</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>0</formId>
@@ -244,21 +244,32 @@
       <eventDescription>function afterProcessFinish(processId){&#xd;
 	log.info(&quot;ID do processo: &quot;+processId);&#xd;
 &#xd;
-	var documentId = anexarDocumento()&#xd;
-&#xd;
-	if(documentId){&#xd;
-		enviaEmail(documentId, processId, getValue(&quot;WKUser&quot;));&#xd;
+	var nomeProcesso = retornarNomeProcesso(processId);&#xd;
+	&#xd;
+	var objeto = retornarInfoGeracao(nomeProcesso);&#xd;
+	&#xd;
+	if(objeto){&#xd;
+		var documentId = anexarDocumento(objeto)&#xd;
+		log.info(&quot;ID do documneto: &quot;+documentId);&#xd;
+		log.info(&quot;Receber e-mail: &quot;+objeto.receberEmail)&#xd;
+		if(documentId &amp;&amp; objeto.receberEmail == &quot;Sim&quot;){&#xd;
+			enviaEmail(documentId, processId, objeto);&#xd;
+		}&#xd;
+	}else{&#xd;
+		throw (&quot;Não foi possível gerar o PDF desta solicitação. Por favor, preencha o formulário de pré-cadastro localizado no GED.&quot;);&#xd;
 	}&#xd;
+	&#xd;
+	&#xd;
 &#xd;
 }&#xd;
 &#xd;
-function anexarDocumento(){&#xd;
+function anexarDocumento(objeto){&#xd;
 	var documentId;&#xd;
-	var pastaDestino = 164;&#xd;
-	var usuarioAdmin = &quot;admin&quot;;&#xd;
-	var senha = &quot;gustavo@123&quot;;&#xd;
+	var pastaDestino = objeto.pasta;&#xd;
+	var usuarioAdmin = objeto.usuario;&#xd;
+	var senha = objeto.senha;&#xd;
 	try{		&#xd;
-		var file = gerarPDF();&#xd;
+		var file = gerarPDF(objeto);&#xd;
 &#xd;
 		var serviceManager = ServiceManager.getService(&quot;ECMDocument&quot;);&#xd;
 		var serviceHelper = serviceManager.getBean();&#xd;
@@ -289,15 +300,15 @@ function anexarDocumento(){&#xd;
 	return documentId;&#xd;
 }&#xd;
 &#xd;
-function enviaEmail(documentId,processId, destinatario){&#xd;
+function enviaEmail(documentId,processId,objeto){&#xd;
 &#xd;
 	var url = fluigAPI.getDocumentService().getDownloadURL(documentId);&#xd;
 &#xd;
 	//Monta mapa com parâmetros do template&#xd;
 	var parametros = new java.util.HashMap();&#xd;
-	parametros.put(&quot;SERVER_URL&quot;,&quot;http://spon010113228:8080&quot;);&#xd;
+	parametros.put(&quot;SERVER_URL&quot;,objeto.servidor);&#xd;
 	parametros.put(&quot;TENANT_ID&quot;, getValue(&quot;WKCompany&quot;));&#xd;
-	parametros.put(&quot;RECEIVER&quot;, obterNomeDestinatario(destinatario));&#xd;
+	parametros.put(&quot;RECEIVER&quot;, obterNomeDestinatario(objeto.destinatario));&#xd;
 	parametros.put(&quot;processo&quot;, processId);&#xd;
 	parametros.put(&quot;link_download&quot;, url);&#xd;
 &#xd;
@@ -306,17 +317,17 @@ function enviaEmail(documentId,processId, destinatario){&#xd;
 &#xd;
 	//Monta lista de destinatários&#xd;
 	var destinatarios = new java.util.ArrayList();&#xd;
-	destinatarios.add(destinatario);&#xd;
+	destinatarios.add(objeto.destinatario);&#xd;
 	log.info(&quot;Entrou no método de enviar e-mail&quot;)&#xd;
 	//Envia e-mail&#xd;
 	notifier.notify(getValue(&quot;WKUser&quot;), &quot;meu_template&quot;, parametros, destinatarios, &quot;text/html&quot;);&#xd;
 &#xd;
 }&#xd;
 &#xd;
-function gerarPDF(){&#xd;
+function gerarPDF(objeto){&#xd;
 	var clientService = fluigAPI.getAuthorizeClientService();&#xd;
 &#xd;
-	var atributos = JSON.stringify(obterDadosFormulario());&#xd;
+	var atributos = JSON.stringify(obterDadosFormulario(objeto));&#xd;
 	var data = {&#xd;
 			companyId : getValue(&quot;WKCompany&quot;) + &apos;&apos;,&#xd;
 			serviceCode : &apos;generator&apos;,&#xd;
@@ -339,14 +350,14 @@ function gerarPDF(){&#xd;
 	}&#xd;
 }&#xd;
 &#xd;
-function obterDadosFormulario(){&#xd;
+function obterDadosFormulario(objeto){&#xd;
 	var conteudo = [];&#xd;
 &#xd;
 	var idDoc = getValue(&quot;WKNumProces&quot;);&#xd;
 &#xd;
 	var c1 = DatasetFactory.createConstraint(&quot;documentid&quot;, idDoc, idDoc, ConstraintType.MUST);&#xd;
 &#xd;
-	dataSet = DatasetFactory.getDataset(&quot;ds_FormTeste&quot;, null, [c1], null);&#xd;
+	dataSet = DatasetFactory.getDataset(objeto.dataset, null, [c1], null);&#xd;
 &#xd;
 	if(dataSet != null){&#xd;
 &#xd;
@@ -359,24 +370,26 @@ function obterDadosFormulario(){&#xd;
 			var aux = colunas[i].length();&#xd;
 &#xd;
 			//se o nome da coluna conter o &quot;metadata#&quot; o codigo ignora&#xd;
-			if(aux &gt; 7 &amp;&amp; colunas[i].indexOf(&quot;metadata#&quot;) != -1){&#xd;
-&#xd;
+			if(!(aux &gt; 7 &amp;&amp; colunas[i].indexOf(&quot;metadata#&quot;) != -1) &amp;&amp; hAPI.getCardValue(colunas[i]) != null){&#xd;
+				log.info(&quot;Filtro: &quot;+objeto.filtro)&#xd;
+				if(objeto.filtro != null &amp;&amp; objeto.filtro != &quot;&quot;){&#xd;
+					if(objeto.filtro.indexOf(colunas[i]) != -1){&#xd;
+						conteudo.push(&quot;&apos;&quot;+colunas[i]+&quot;&apos;:&apos;&quot;+hAPI.getCardValue(colunas[i])+&quot;&apos;&quot;);&#xd;
+					}&#xd;
+				}else{&#xd;
+					conteudo.push(&quot;&apos;&quot;+colunas[i]+&quot;&apos;:&apos;&quot;+hAPI.getCardValue(colunas[i])+&quot;&apos;&quot;);&#xd;
+				}&#xd;
 			}&#xd;
-			else{&#xd;
-&#xd;
-				conteudo.push(&quot;&apos;&quot;+colunas[i]+&quot;&apos;:&apos;&quot;+hAPI.getCardValue(colunas[i])+&quot;&apos;&quot;);&#xd;
-			}&#xd;
-&#xd;
 &#xd;
 		}&#xd;
 		&#xd;
 &#xd;
 		&#xd;
-		var SUPERconteudo =&quot;{&quot;+conteudo.join(&quot;,&quot;)+&quot;}&quot;;&#xd;
+		var json =&quot;{&quot;+conteudo.join(&quot;,&quot;)+&quot;}&quot;;&#xd;
 		&#xd;
-		log.info(&quot;VALORES -&gt; &quot; + SUPERconteudo);&#xd;
+		log.info(&quot;VALORES -&gt; &quot; + json);&#xd;
 		&#xd;
-		return SUPERconteudo;&#xd;
+		return json;&#xd;
 	}&#xd;
 }&#xd;
 &#xd;
@@ -399,6 +412,36 @@ function criarAnexo(factory, arrayBytes){&#xd;
 	anexo.setPrincipal(true);&#xd;
 &#xd;
 	return anexo;&#xd;
+}&#xd;
+&#xd;
+function retornarNomeProcesso(processId){&#xd;
+&#xd;
+	var c1 = DatasetFactory.createConstraint(&quot;workflowProcessPK.processInstanceId&quot;, processId, processId, ConstraintType.MUST);&#xd;
+&#xd;
+	var dsProcesso = DatasetFactory.getDataset(&quot;workflowProcess&quot;, null, [c1], null);&#xd;
+&#xd;
+	return dsProcesso.getValue(0, &quot;processId&quot;);&#xd;
+&#xd;
+}&#xd;
+&#xd;
+function retornarInfoGeracao(nomeProcesso){&#xd;
+	var c1 = DatasetFactory.createConstraint(&quot;NOMEPROCESSO&quot;, nomeProcesso, nomeProcesso, ConstraintType.MUST);&#xd;
+	var c2 = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);&#xd;
+	&#xd;
+	var dataset = DatasetFactory.getDataset(&quot;dsParametrizacao&quot;, null, [c1, c2], null);&#xd;
+	&#xd;
+	var objeto = {&#xd;
+			usuario : dataset.getValue(0, &quot;usuario&quot;),&#xd;
+			senha : dataset.getValue(0, &quot;senha&quot;),&#xd;
+			dataset: dataset.getValue(0, &quot;nomeDataset&quot;),&#xd;
+			pasta : dataset.getValue(0, &quot;pasta&quot;), &#xd;
+			receberEmail : dataset.getValue(0, &quot;receberEmail&quot;),&#xd;
+			destinatario : dataset.getValue(0, &quot;destinatario&quot;),&#xd;
+			servidor: dataset.getValue(0, &quot;servidor&quot;),&#xd;
+			filtro:dataset.getValue(0, &quot;filtro&quot;)&#xd;
+	}&#xd;
+	&#xd;
+	return objeto;&#xd;
 }&#xd;
 &#xd;
 </eventDescription>
@@ -462,7 +505,7 @@ function criarAnexo(factory, arrayBytes){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>novo_diagrama</processId>
-        <version>2</version>
+        <version>6</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
