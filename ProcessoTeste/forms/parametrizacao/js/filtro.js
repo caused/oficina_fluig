@@ -3,20 +3,21 @@ var autoCompleteInput;
 $(function (){
 	$("#nomeDataset").on("input", function(){
 		if(autoCompleteInput){
-			autoCompleteInput.removeAll();
+			console.log("entrou no if");
+			autoCompleteInput.destroy();
 		}
-		
 		var dataset = DatasetFactory.getDataset($(this).val(), null, null, null);
 		var colunas = dataset.columns;
 		console.log(colunas);
-		autoCompleteInput = autoComplete(colunas);
-		autoCompleteInput.refresh();
+		autoCompleteInput = autoComplete(colunas, "#filtro");
+		
+		montarPaiFilho($(this).val(), window.parent.WCMAPI.getOrganizationId());
 	})
 
 })
 
-function autoComplete(valor){
-	return FLUIGC.autocomplete('#filtro', {      
+function autoComplete(valor, id){
+	return FLUIGC.autocomplete(id, {      
 		    source:substringMatcher(valor),
 		    highlight: true,
 		    displayKey: 'Coluna',
@@ -43,3 +44,7 @@ function substringMatcher(strs) {
         cb(matches);
     };
  }
+
+function removeAndCreate(id){
+	
+}

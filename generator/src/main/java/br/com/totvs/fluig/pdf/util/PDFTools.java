@@ -3,8 +3,11 @@ package br.com.totvs.fluig.pdf.util;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import java.util.Set;
-import java.util.SortedMap;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -18,7 +21,7 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 public class PDFTools {
 
-	public static void createPDF(ByteArrayOutputStream output, SortedMap<String, String> atributos){
+	public static void createPDF(ByteArrayOutputStream output, LinkedHashMap<String, String> atributos){
 		try(PDDocument doc = new PDDocument()){
 			
 
@@ -26,24 +29,29 @@ public class PDFTools {
 			PDFont fonteValor = PDType1Font.HELVETICA;
 			
 			PDPageContentStream contents = generatePage(doc);
-			int quebraLinha = 0;
+			Integer quebraLinha = new Integer(0);
 			
 			criarCabecalho(doc, fonteNome, contents);
 			
 			Set<Entry<String, String>> entradas = atributos.entrySet();
 			for(Entry<String, String> entrada : entradas ){
-				contents.beginText();				
-				contents.setFont(fonteNome, 12);
-				contents.newLineAtOffset(5, 740-quebraLinha);
-				contents.showText(entrada.getKey());
-				contents.endText();
-				
-				contents.beginText();				
-				contents.setFont(fonteValor, 12);
-				contents.newLineAtOffset(5, 726-quebraLinha);
-				contents.showText(entrada.getValue());
-				contents.endText();
-				quebraLinha +=40;
+				if(entrada.getKey().contains("titulo")){
+					quebraLinha = write(contents, fonteNome, 18, quebraLinha, 730, 20, entrada.getValue());
+				}else{
+					if(entrada.getValue().contains(";")){
+						quebraLinha = write(contents, fonteNome, 12, quebraLinha, 730, 0, entrada.getKey());
+						String[] valores = entrada.getValue().split(";");
+						List<String> linhas= filterArray(valores);
+						
+						for(String linha : linhas){
+							quebraLinha = write(contents, fonteValor, 12, quebraLinha, 716, 15,linha);
+						}
+						quebraLinha+=30;
+					}else{
+						quebraLinha = write(contents, fonteNome, 12, quebraLinha, 730, 0, entrada.getKey());
+						quebraLinha = write(contents, fonteValor, 12, quebraLinha, 716, 40, entrada.getValue());
+					}
+				}
 				
 				if(quebraLinha >= 700){
 					contents.close();
@@ -61,6 +69,20 @@ public class PDFTools {
 			t.printStackTrace();
 		}
 
+	}
+
+	private static List<String> filterArray(String[] linhas) {
+		List<String> list = Arrays.asList(linhas);
+		
+		list = list.stream().filter( linha -> linha != null && !linha.trim().isEmpty()).collect(Collectors.toList());
+		List<String> listaComTracos = list.stream().filter(f -> f.trim().startsWith("-")).collect(Collectors.toList());
+		List<String> listaSemTracos = list.stream().filter(f -> !f.trim().startsWith("-")).collect(Collectors.toList());
+		
+		listaSemTracos.addAll(listaComTracos.stream()
+	    .map(f -> new String(f.trim().substring(1).trim()))
+	    	    .collect(Collectors.toList()));
+		
+		return listaSemTracos;
 	}
 
 	private static PDPageContentStream generatePage(PDDocument doc) throws IOException {
@@ -88,5 +110,20 @@ public class PDFTools {
 		contents.newLineAtOffset(99, 760);
 		contents.showText("Relatório dos campos do formulário");
 		contents.endText();
+	}
+	
+	private static int write(PDPageContentStream contents, PDFont fonte,long fonteTamanho,  Integer quebraLinha,int pixelsOffset, int pixelsProximaLinha, String valor){
+		try {
+			contents.beginText();
+			contents.setFont(fonte, fonteTamanho);
+			contents.newLineAtOffset(5, pixelsOffset-quebraLinha);
+			contents.showText(valor);
+			contents.endText();
+			quebraLinha +=pixelsProximaLinha;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}				
+		return quebraLinha;
 	}
 }

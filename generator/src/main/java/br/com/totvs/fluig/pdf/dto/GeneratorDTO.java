@@ -1,20 +1,19 @@
 package br.com.totvs.fluig.pdf.dto;
 
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.LinkedHashMap;
 
 public class GeneratorDTO {
 	
-	private SortedMap<String, String> atributos = new TreeMap<String, String>();
+	private LinkedHashMap<String, String> atributos = new LinkedHashMap<String, String>();
 	
 	public GeneratorDTO(){
 	}
 
-	public SortedMap<String, String> getAtributos() {
+	public LinkedHashMap<String, String> getAtributos() {
 		return atributos;
 	}
 
-	public void setAtributos(SortedMap<String, String> atributos) {
+	public void setAtributos(LinkedHashMap<String, String> atributos) {
 		this.atributos = atributos;
 	}
 	
