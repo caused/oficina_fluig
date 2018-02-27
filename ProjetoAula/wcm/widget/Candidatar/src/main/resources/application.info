@@ -1,0 +1,16 @@
+application.type=widget
+application.code=Candidatar
+application.title=Candidatar
+application.description=Widget pública para que os candidatos consigam se candidatar para a vaga de desenvolvedor
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=spon010113228
+developer.name=galves
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=false
+view.file=view.ftl
+edit.file=edit.ftl
+locale.file.base.name=Candidatar
+application.resource.js.1=/resources/js/Candidatar.js
+application.resource.css.2=/resources/css/Candidatar.css
